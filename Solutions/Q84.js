@@ -7,14 +7,14 @@ var largestRectangleArea = function (heights) {
     for (let i = 0; i < heights.length; i++) {
         let l = i, r = i, height = heights[i]
         while (l > 0) {
-            if (heights[i - 1] > height) {
+            if (heights[l - 1] >= height) {
                 l--
             } else {
                 break
             }
         }
         while (r < heights.length - 1) {
-            if (heights[r + 1] > height) {
+            if (heights[r + 1] >= height) {
                 r++
             } else {
                 break
