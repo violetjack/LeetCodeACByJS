@@ -17,6 +17,7 @@ Trie.prototype.insert = function (word) {
             node[char] = {}
         node = node[char]
     })
+    node.isEnd = true
 };
 
 /**
@@ -35,7 +36,7 @@ Trie.prototype.search = function (word) {
             return false
         }
     }
-    return Object.keys(node).length == 0
+    return !!node.isEnd
 };
 
 /**

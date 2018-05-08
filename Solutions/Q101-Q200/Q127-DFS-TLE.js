@@ -5,7 +5,6 @@
  * @return {number}
  */
 var ladderLength = function (beginWord, endWord, wordList) {
-    if (!wordList.includes(endWord)) return 0
     return dfs(beginWord, endWord, wordList)
 };
 
@@ -31,4 +30,6 @@ function changeOneChar(a, b) {
     return count == 1
 }
 
-ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])
+ladderLength("hit",
+"cog",
+["hot","cog","dot","dog","hit","lot","log"])

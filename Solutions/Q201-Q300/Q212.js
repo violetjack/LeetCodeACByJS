@@ -20,9 +20,6 @@ var findWords = function (board, words) {
 };
 
 function DFS(word, board, index, j, i, subStr) {
-    if (index >= word.length || subStr == word) {
-        hasWord = true
-    }
     if (word[index] == board[j][i]) {
         subStr += board[j][i]
         board[j][i] = "*"
@@ -36,6 +33,9 @@ function DFS(word, board, index, j, i, subStr) {
             DFS(word, board, index + 1, j, i - 1, subStr)
         board[j][i] = word[index]
     }
+    if (index >= word.length || subStr == word) {
+        hasWord = true
+    }
 }
 
-findWords([["a", "b", "c"], ["a", "e", "d"], ["a", "f", "g"]], ["eaabcdgfa"])
+findWords([["a"]], ["a"])

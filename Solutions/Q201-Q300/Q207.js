@@ -4,24 +4,16 @@
  * @return {boolean}
  */
 var canFinish = function (numCourses, prerequisites) {
-    let hasConflict = false
-    for (let i = 0; i < prerequisites.length; i++) {
-        for (let j = 0; j < prerequisites.length; j++) {
-            if (i != j
-                && prerequisites[i][0] == prerequisites[j][1]
-                && prerequisites[i][0] == prerequisites[j][1])
-                return false
-        }
-    }
-
     for (let i = 0; i < numCourses; i++) {
-        if (dfs(i, prerequisites.slice())) return true
+        if (dfs(i, [], prerequisites)) return true
     }
     return false
 };
 
-function dfs(index, prerequisites) {
-    if (prerequisites.length == 0) {
+let can = false
+
+function dfs(index, arr, numCourses, prerequisites) {
+    if (arr.length == numCourses) {
         return true
     }
     let canFinish = false

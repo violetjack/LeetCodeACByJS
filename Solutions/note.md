@@ -6,10 +6,12 @@
 * 使用 `for (let j = 0; i != j && j < points.length; j++)` 来遍历并剔除 i 是及其错误的，这样会中断 for 循环。
 * Number 的 toString 方法可以返回 2-36 进制的数字
 
-
 ## 有问题的题目
 
 * 127
-* 166
+* 166 BFS
 * 207 使用拓卜算法和DFS
-* 
+* 210 BFS or DFS
+* 227 TLE
+* 384
+* 395
