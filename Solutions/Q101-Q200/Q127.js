@@ -6,22 +6,32 @@
  */
 var ladderLength = function (beginWord, endWord, wordList) {
     if (!wordList.includes(endWord)) return 0
-    return dfs(beginWord, endWord, wordList)
-};
+    let set = new Set(),
+        visited = new Set(),
+        len = 1
 
-function dfs(beginWord, endWord, wordList) {
-    if (changeOneChar(beginWord, endWord)) return 2
-    let max = Number.MAX_VALUE
-    for (let i = 0; i < wordList.length; i++) {
-        if (changeOneChar(beginWord, wordList[i])) {
-            let clone = wordList.slice()
-            clone.splice(i, 1)
-            let cur = dfs(wordList[i], endWord, clone) + 1
-            max = Math.min(max, cur)
+    set.add(beginWord)
+    visited.add(beginWord)
+    while (set.size != 0) {
+        let tmp = new Set([...set])
+
+        for (let w of tmp) {
+            visited.add(w)
+            set.delete(w)
+
+            if (changeOneChar(w, endWord))
+                return len + 1
+            
+            for (let word of wordList){
+                if (changeOneChar(w, word) && !visited.has(word)){
+                    set.add(word)
+                }
+            }
         }
+        len++
     }
-    return max == Number.MAX_VALUE ? 0 : max
-}
+    return 0
+};
 
 function changeOneChar(a, b) {
     let count = 0
@@ -31,4 +41,8 @@ function changeOneChar(a, b) {
     return count == 1
 }
 
-ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])
+let beginWord = "hit",
+    endWord = "cog",
+    wordList = ["hot", "dot", "dog", "lot", "log", "cog"]
+
+ladderLength(beginWord, endWord, wordList)

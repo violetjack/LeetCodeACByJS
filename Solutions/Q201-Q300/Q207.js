@@ -3,30 +3,50 @@
  * @param {number[][]} prerequisites
  * @return {boolean}
  */
-var canFinish = function (numCourses, prerequisites) {
-    for (let i = 0; i < numCourses; i++) {
-        if (dfs(i, [], prerequisites)) return true
+var canFinish = function(numCourses, prerequisites) {
+    var courses = new Array(numCourses),
+        visited = new Array(numCourses),
+        preLen = prerequisites.length,
+        flag = true,
+        temp;
+    
+    visited.fill(false);
+    courses.fill(undefined);
+    for (let key in courses) {
+        courses[key] = [];
     }
-    return false
-};
-
-let can = false
-
-function dfs(index, arr, numCourses, prerequisites) {
-    if (arr.length == numCourses) {
-        return true
+    
+    for (let cur in prerequisites) {
+        temp = prerequisites[cur];
+        courses[temp[0]].push(temp[1]);
     }
-    let canFinish = false
-    for (let i = 0; i < prerequisites.length; i++) {
-        let pre = prerequisites[i][1]
-        let next = prerequisites[i][0]
-        if (pre == index) {
-            let del = prerequisites.splice(i, 1)
-            canFinish = canFinish || dfs(next, prerequisites)
-            prerequisites.splice(i, 0, del)
+    
+    for (let key in courses) {
+        if (flag && !visited[key]) {
+            visited[key] = true;
+            map = new Array(numCourses);
+            map.fill(false);
+            dfs(key, map);
         }
     }
-    return canFinish
-}
-
-canFinish(2, [[0, 1], [1, 0]])
+    
+    return flag;
+    
+    function dfs(index, map) {
+        if (!flag) return;
+        
+        visited[index] = true;
+        
+        if (map[index]) {
+            flag = false;
+            return;
+        }
+        
+        for (let key in courses[index]) {
+            map[index] = true;
+            dfs(courses[index][key], map);
+            map[index] = false;
+        }
+    }
+    
+};

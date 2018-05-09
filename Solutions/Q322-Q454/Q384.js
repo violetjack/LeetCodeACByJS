@@ -45,3 +45,13 @@ function randRange(Min, Max) {
  * var param_1 = obj.reset()
  * var param_2 = obj.shuffle()
  */
+
+ var s = new Solution([1,2,3,4,5,6,7,8])
+console.log(s.shuffle()) 
+console.log(s.reset()) 
+console.log(s.shuffle()) 
+console.log(s.reset()) 
+console.log(s.shuffle()) 
+console.log(s.reset()) 
+console.log(s.shuffle()) 
+console.log(s.reset()) 
