@@ -22,3 +22,25 @@ var maxProduct = function (nums) {
 };
 
 console.log(maxProduct([-2, 3, -4]))
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxProduct = function(nums) {
+    let max = Number.MIN_SAFE_INTEGER;
+    let imax = 1;
+    let imin = 1
+    for (let i = 0;i < nums.length; i++) {
+        if (nums[i] < 0) {
+            let temp = imax
+            imax = imin
+            imin = temp
+        }
+        imax = Math.max(imax * nums[i], nums[i])
+        imin = Math.min(imin * nums[i], nums[i])
+
+        max = Math.max(max, imax)
+    }
+    return max
+};
