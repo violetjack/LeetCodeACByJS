@@ -1,19 +1,26 @@
-# LeetCode AC
+# LeetCode AC By JavaScript
 
-将 LeetCode 中的算法题都用 JavaScript 来实现一遍。
+记录自己刷 LeetCode 的代码~
 
-## 相关网址
+算法虐我千百遍，我待算法如初恋 :)
 
-* [LeetCode](https://leetcode.com/problemset/top-interview-questions/)
-* [LettCode 中文网题库](https://leetcode-cn.com/problemset/all/)
+## LeetCode 中文（力扣）
+
+https://leetcode-cn.com/
 
 ## 刷题心得
 
-* [LeetCode 算法题刷题心得（JavaScript）](https://www.jianshu.com/p/8876704ea9c8)
+* [LeetCode 算法题刷题心得（JavaScript）](https://www.jianshu.com/p/8876704ea9c8) （两年前的刷题心得）
+* 再刷一两百题后再来一弹~
 
-## TODO
+## Solutions
 
-将题库中的算法题全部刷一遍。
+一般我是直接在 `0001.js` 文件中写题解，然后用 node 来运行。
+
+```bash
+cd Solutions
+node 0001.js
+```
 
 ## 最后
 
