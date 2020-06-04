@@ -26,9 +26,32 @@ var productExceptSelf = function(nums) {
   return ans
 };
 
-// productExceptSelf([1, 2, 3, 4])
-productExceptSelf([0, 0])
+productExceptSelf([1, 2, 3, 4])
 
 /**
  * PS：以上写法用了两次动态规划算出最终的结果。
+ * 稍微调整后，可以得到以下优化解法！
  */
+
+ /**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var productExceptSelf = function(nums) {
+  const len = nums.length
+  const ans = new Array(len)
+
+  ans[0] = 1
+  for (let i = 1; i < len; i++) {
+    ans[i] = ans[i - 1] * nums[i - 1]
+  }
+  let R = 1
+  for (let i = len - 1; i >= 0; i--) {
+    ans[i] = ans[i] * R
+    R = R * nums[i]
+  }
+  console.log(ans)
+  return ans
+};
+
+productExceptSelf([1, 2, 3, 4])
