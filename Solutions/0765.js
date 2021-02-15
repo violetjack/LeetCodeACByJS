@@ -36,3 +36,7 @@ var minSwapsCouples = function(row) {
     }
     return ret;
 };
+
+/**
+ * 通过并查集或者广度优先搜索算法来解决
+ */
